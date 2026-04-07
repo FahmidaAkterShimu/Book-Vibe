@@ -3,12 +3,12 @@ import { NavLink } from 'react-router';
 
 const Navbar = () => {
     const links = <>
-        <li><NavLink to={"/"} className={({ isActive }) => `text-lg ${isActive ? "text-[#23BE0A] border border-[#23BE0A]" : ""}`}>Home</NavLink></li>
-        <li><NavLink to={"/books"} className={({ isActive }) => `text-lg ${isActive ? "text-[#23BE0A] border border-[#23BE0A]" : ""}`}>Listed Books</NavLink></li>
-        <li><NavLink to={"/page-to-read"} className={({ isActive }) => `text-lg ${isActive ? "text-[#23BE0A] border border-[#23BE0A]" : ""}`}>Pages to Read</NavLink></li>
+        <li><NavLink to={"/"} className={({ isActive }) => `text-lg rounded-lg ${isActive ? "text-[#23BE0A] border border-[#23BE0A]" : ""}`}>Home</NavLink></li>
+        <li><NavLink to={"/books"} className={({ isActive }) => `text-lg rounded-lg ${isActive ? "text-[#23BE0A] border border-[#23BE0A]" : ""}`}>Listed Books</NavLink></li>
+        <li><NavLink to={"/page-to-read"} className={({ isActive }) => `text-lg rounded-lg ${isActive ? "text-[#23BE0A] border border-[#23BE0A]" : ""}`}>Pages to Read</NavLink></li>
     </>
     return (
-        <div className="navbar bg-base-100">
+        <div className="navbar work-sans bg-base-100 mt-8 mb-8">
             <div className="navbar-start">
                 {/* for small device */}
                 <div className="dropdown">
