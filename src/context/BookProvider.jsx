@@ -5,41 +5,41 @@ export const BookContext = createContext()
 
 const BookProvider = ({ children }) => {
 
-    const [storedBooks, setStoredBooks] = useState([]);
+    const [readBooks, setReadBooks] = useState([]);
     const [wishList, setWishList] = useState([]);
 
 
     const handleMarkAsRead = (currentBook) => {
-        // const isExistInWishList = wishList.find((book) => book.bookId === currentBook.bookId)
+        const isExistInWishList = wishList.find((book) => book.bookId === currentBook.bookId)
 
-        // if (isExistInWishList) {
-        //     toast.error("This book is already in Wishlist.")
-        //     return;
-        // }
-        
-        const isExistBook = storedBooks.find(book => book.bookId == currentBook.bookId);
+        if (isExistInWishList) {
+            toast.error("This book is already in Wishlist.")
+            return;
+        }
+
+        const isExistBook = readBooks.find(book => book.bookId == currentBook.bookId);
 
         if (isExistBook) {
-            toast.error("The book is already exist in Read-list");
+            toast.error("The book already exists in the Read-list.");
         }
         else {
-            setStoredBooks([...storedBooks, currentBook]);
+            setReadBooks([...readBooks, currentBook]);
             toast.success(`${currentBook.bookName} is added to Read-list`);
         }
     };
 
     const handleWishList = (currentBook) => {
-        const isExistInReadList = storedBooks.find((book) => book.bookId === currentBook.bookId)
+        const isExistInReadList = readBooks.find((book) => book.bookId === currentBook.bookId)
 
         if (isExistInReadList) {
-            toast.error("This book is already in read list.")
+            toast.error("This book is already in the Read-list.")
             return;
         }
 
         const isExistBook = wishList.find(book => book.bookId == currentBook.bookId);
 
         if (isExistBook) {
-            toast.error("The book is already exist in Wishlist");
+            toast.error("The book already exists in the Wishlist");
         }
         else {
             setWishList([...wishList, currentBook]);
@@ -48,8 +48,8 @@ const BookProvider = ({ children }) => {
     };
 
     const data = {
-        storedBooks,
-        setStoredBooks,
+        readBooks,
+        setReadBooks,
         handleMarkAsRead,
         wishList,
         setWishList,
